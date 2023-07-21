@@ -164,3 +164,38 @@ export interface Demographic {
   name: string;
   url: string;
 }
+
+export interface SearchParams {
+  sfw?: boolean;
+  unapproved?: boolean;
+  page?: number;
+  limit?: number;
+  q?: string;
+  type?: "tv" | "movie" | "ova" | "special" | "ona" | "music";
+  score?: number;
+  min_score?: number;
+  max_socre?: number;
+  status?: "airing" | "complete" | "upcoming";
+  rating?: "g" | "pg" | "pg13" | "r17" | "r" | "rx";
+  genres?: string;
+  genres_exclude?: string;
+  order_by?:
+    | "mal_id"
+    | "title"
+    | "type"
+    | "rating"
+    | "start_date"
+    | "end_date"
+    | "episodes"
+    | "score"
+    | "scored_by"
+    | "rank"
+    | "popularity"
+    | "members"
+    | "favorites";
+  sort?: "desc" | "asc";
+  letter?: string;
+  producers?: string;
+  start_date?: string;
+  end_date?: string;
+}
