@@ -20,13 +20,14 @@ export const AnimeList = ({ animeList, title }: AnimeListProps) => {
               className="flex flex-col items-center 
               justify-between max-w-[150px] bg-gray-900 duration-200 hover:brightness-50"
             >
+              <img src={anime.images.webp.image_url} alt={anime.title} />
               <div className="flex flex-col items-center p-2">
                 <span title={anime.title} className="cursor-default">
                   {anime.title.substring(0, 20)}
                   {anime.title.length > 20 ? "..." : ""}
                 </span>
+                <p className="font-bold">{anime.score} ⭐</p>
               </div>
-              <img src={anime.images.webp.image_url} alt={anime.title} />
             </Link>
           );
         })}

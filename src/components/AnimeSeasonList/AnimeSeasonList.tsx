@@ -6,6 +6,8 @@ export const AnimeSeasonList = async () => {
   const animeSeasonList = await getSeasonNow();
 
   return (
-    <AnimeList animeList={animeSeasonList.data} title={"Anime season list"} />
+    <div className="flex flex-col w-full">
+      <AnimeList animeList={animeSeasonList.data} title={"Anime season list"} />
+    </div>
   );
 };

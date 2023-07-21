@@ -4,6 +4,11 @@ import useStore from "@/store/store";
 import { SearchInputTerm } from "../SearchInputTerm/SearchInputTerm";
 import { SearchResult } from "../SearchResult/SearchResult";
 import { useState } from "react";
+import { SearchSelectType } from "../SearchSelectType/SearchSelectType";
+import { SearchNumberScore } from "../SearchNumberScore/SearchNumberScore";
+import { SearchSelectRating } from "../SearchSelectRating/SearchSelectRating";
+import { SearchSelectOrder } from "../SearchSelectOrder/SearchSelectOrder";
+import { SearchSelectSort } from "../SearchSelectSort/SearchSelectSort";
 
 export const SearchBar = () => {
   const { searchParams } = useStore();
@@ -19,19 +24,25 @@ export const SearchBar = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4">
-      {JSON.stringify(searchParams)}
-      <div className="flex items-center p-4 gap-2">
+    <div className="flex flex-col w-full gap-4">
+      <div className="flex items-center justify-center gap-2 w-full flex-wrap">
         <SearchInputTerm />
+        <SearchNumberScore />
+        <SearchSelectType />
+        <SearchSelectRating />
+        <SearchSelectOrder />
+        <SearchSelectSort />
         <button
           onClick={() => searchAnime()}
-          className="flex justify-center items-center p-2 mt-2 bg-gradient-to-r from-rose-700 to-pink-700
+          className="flex justify-center items-center p-2 bg-gradient-to-r from-rose-700 to-pink-700
          text-white font-bold rounded-sm duration-200 hover:brightness-150 w-[120px]"
         >
           Buscar
         </button>
       </div>
-      <SearchResult searchAction={searchAction} />
+      <div className="flex flex-col items-center justify-center">
+        <SearchResult searchAction={searchAction} />
+      </div>
     </div>
   );
 };

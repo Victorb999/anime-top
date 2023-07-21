@@ -174,7 +174,7 @@ export interface SearchParams {
   type?: "tv" | "movie" | "ova" | "special" | "ona" | "music";
   score?: number;
   min_score?: number;
-  max_socre?: number;
+  max_score?: number;
   status?: "airing" | "complete" | "upcoming";
   rating?: "g" | "pg" | "pg13" | "r17" | "r" | "rx";
   genres?: string;

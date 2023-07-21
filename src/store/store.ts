@@ -15,7 +15,7 @@ export type Store = {
 const useStore = create<Store>(
   (set): Store => ({
     animeList: [],
-    searchParams: { limit: 10, page: 1 },
+    searchParams: { limit: 20, page: 1 },
     loading: false,
     error: false,
     setAnimeList: (animeList: Daum[]) =>

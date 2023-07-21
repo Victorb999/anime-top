@@ -8,7 +8,7 @@ interface SearchResultProps {
 export const SearchResult = ({ searchAction }: SearchResultProps) => {
   const { loading, error, animeList } = useStore();
 
-  if (!searchAction) return <></>;
+  if (!searchAction && animeList.length === 0) return <></>;
 
   if (loading) {
     return <div>Loading...</div>;
@@ -27,9 +27,5 @@ export const SearchResult = ({ searchAction }: SearchResultProps) => {
     );
   }
 
-  return (
-    <div>
-      <AnimeList animeList={animeList} title={"Search results"} />
-    </div>
-  );
+  return <AnimeList animeList={animeList} title={"Search results"} />;
 };
