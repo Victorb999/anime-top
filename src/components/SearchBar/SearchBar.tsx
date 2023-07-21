@@ -1,16 +1,21 @@
 "use client";
 import { getAnimeSearch } from "@/services/api";
-import { AnimeList } from "../AnimeList/AnimeList";
 import useStore from "@/store/store";
 import { SearchInputTerm } from "../SearchInputTerm/SearchInputTerm";
+import { SearchResult } from "../SearchResult/SearchResult";
+import { useState } from "react";
+
 export const SearchBar = () => {
-  const { searchParams, animeList } = useStore();
+  const { searchParams } = useStore();
+  const [searchAction, setSearchAction] = useState<boolean>(false);
 
   const searchAnime = async () => {
+    useStore.getState().setLoading(true);
     const animeList = await getAnimeSearch(searchParams);
     if (!animeList) useStore.getState().setError(true);
     useStore.getState().setLoading(false);
     useStore.getState().setAnimeList(animeList);
+    setSearchAction(true);
   };
 
   return (
@@ -26,9 +31,7 @@ export const SearchBar = () => {
           Buscar
         </button>
       </div>
-      {animeList.length > 0 && (
-        <AnimeList animeList={animeList} title={"Search results"} />
-      )}
+      <SearchResult searchAction={searchAction} />
     </div>
   );
 };

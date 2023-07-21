@@ -16,7 +16,7 @@ const useStore = create<Store>(
   (set): Store => ({
     animeList: [],
     searchParams: { limit: 10, page: 1 },
-    loading: true,
+    loading: false,
     error: false,
     setAnimeList: (animeList: Daum[]) =>
       set((state: Store) => ({

@@ -1,7 +1,14 @@
 import { AnimeList } from "../AnimeList/AnimeList";
 import useStore from "@/store/store";
-export const SearchResult = () => {
+
+interface SearchResultProps {
+  searchAction: boolean;
+}
+
+export const SearchResult = ({ searchAction }: SearchResultProps) => {
   const { loading, error, animeList } = useStore();
+
+  if (!searchAction) return <></>;
 
   if (loading) {
     return <div>Loading...</div>;
@@ -11,7 +18,7 @@ export const SearchResult = () => {
     return <div>Ops ocorreu um erro.</div>;
   }
 
-  if (!loading && animeList.length === 0) {
+  if (searchAction && animeList.length === 0) {
     return (
       <div>
         Não encontramos nenhum anime com esse filtro de busca. Tente outro
