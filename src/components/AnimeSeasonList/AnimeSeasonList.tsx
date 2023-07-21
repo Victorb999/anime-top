@@ -7,7 +7,10 @@ export const AnimeSeasonList = async () => {
 
   return (
     <div className="flex flex-col w-full">
-      <AnimeList animeList={animeSeasonList.data} title={"Anime season list"} />
+      <AnimeList
+        animeList={animeSeasonList?.data}
+        title={"Anime season list"}
+      />
     </div>
   );
 };

@@ -20,16 +20,11 @@ export const SearchSelectSort = () => {
       className="rounded text-white bg-gray-900 border-none 
       outline-none h-[40px] m-0 p-2 duration-200
        hover:bg-gray-900 active:bg-gray-800"
+      defaultValue={searchParams.sort ?? "none"}
     >
-      <option value="none" selected>
-        Sort by
-      </option>
+      <option value="none">Sort by</option>
       {options.map((option) => (
-        <option
-          key={option}
-          value={option}
-          selected={option === searchParams.sort}
-        >
+        <option key={option} value={option}>
           {option}
         </option>
       ))}

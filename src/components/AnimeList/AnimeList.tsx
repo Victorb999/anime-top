@@ -12,7 +12,7 @@ export const AnimeList = ({ animeList, title }: AnimeListProps) => {
       <h1 className="text-4xl font-bold mb-4">{title}</h1>
 
       <div className="flex flex-wrap gap-4 justify-center">
-        {animeList.map((anime) => {
+        {animeList?.map((anime) => {
           return (
             <Link
               key={anime.mal_id}

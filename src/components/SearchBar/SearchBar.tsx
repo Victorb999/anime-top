@@ -9,6 +9,7 @@ import { SearchNumberScore } from "../SearchNumberScore/SearchNumberScore";
 import { SearchSelectRating } from "../SearchSelectRating/SearchSelectRating";
 import { SearchSelectOrder } from "../SearchSelectOrder/SearchSelectOrder";
 import { SearchSelectSort } from "../SearchSelectSort/SearchSelectSort";
+import { SearchByGenres } from "../SearchByGenres/SearchByGenres";
 
 export const SearchBar = () => {
   const { searchParams } = useStore();
@@ -39,6 +40,9 @@ export const SearchBar = () => {
         >
           Buscar
         </button>
+      </div>
+      <div className="flex flex-col items-center justify-center">
+        <SearchByGenres />
       </div>
       <div className="flex flex-col items-center justify-center">
         <SearchResult searchAction={searchAction} />

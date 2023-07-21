@@ -36,16 +36,11 @@ export const SearchSelectRating = () => {
       className="rounded text-white bg-gray-900 border-none 
       outline-none h-[40px] m-0 p-2 duration-200 w-[150px]
        hover:bg-gray-900 active:bg-gray-800"
+      defaultValue={searchParams.rating ?? "all"}
     >
-      <option value="all" selected>
-        Select rating
-      </option>
+      <option value="all">Select rating</option>
       {optionsArray.map(({ value, description }) => (
-        <option
-          key={value}
-          value={value}
-          selected={value === searchParams.rating}
-        >
+        <option key={value} value={value}>
           {description}
         </option>
       ))}

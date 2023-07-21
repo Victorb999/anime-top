@@ -65,16 +65,11 @@ export const SearchSelectOrder = () => {
       className="rounded text-white bg-gray-900 border-none 
       outline-none h-[40px] m-0 p-2 duration-200 w-[150px]
        hover:bg-gray-900 active:bg-gray-800"
+      defaultValue={searchParams.order_by ?? "none"}
     >
-      <option value="none" selected>
-        Order by
-      </option>
+      <option value="none">Order by</option>
       {options.map((option) => (
-        <option
-          key={option}
-          value={option}
-          selected={option === searchParams.order_by}
-        >
+        <option key={option} value={option}>
           {option}
         </option>
       ))}

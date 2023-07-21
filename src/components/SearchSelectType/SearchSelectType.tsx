@@ -33,16 +33,11 @@ export const SearchSelectType = () => {
       className="rounded text-white bg-gray-900 border-none 
       outline-none h-[40px] m-0 p-2 duration-200
        hover:bg-gray-900 active:bg-gray-800"
+      defaultValue={searchParams.type ?? "all"}
     >
-      <option value="all" selected>
-        Select type
-      </option>
+      <option value="all">Select type</option>
       {options.map((option) => (
-        <option
-          key={option}
-          value={option}
-          selected={option === searchParams.type}
-        >
+        <option key={option} value={option}>
           {option}
         </option>
       ))}
