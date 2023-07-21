@@ -67,7 +67,7 @@ export const SearchSelectOrder = () => {
        hover:bg-gray-900 active:bg-gray-800"
     >
       <option value="none" selected>
-        Select order
+        Order by
       </option>
       {options.map((option) => (
         <option

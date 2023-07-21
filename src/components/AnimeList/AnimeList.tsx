@@ -11,7 +11,7 @@ export const AnimeList = ({ animeList, title }: AnimeListProps) => {
     <div className="flex flex-col mb-4">
       <h1 className="text-4xl font-bold mb-4">{title}</h1>
 
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap gap-4 justify-center">
         {animeList.map((anime) => {
           return (
             <Link
