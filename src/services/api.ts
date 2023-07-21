@@ -26,6 +26,7 @@ export const getAnimeById = async (id: number): Promise<Daum> => {
     });
 };
 export const getAnimeSearch = async (params: SearchParams): Promise<Daum[]> => {
+  // @ts-ignore
   const searchParams = new URLSearchParams(params);
 
   return await api
