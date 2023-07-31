@@ -9,6 +9,10 @@ interface PageProps {
 export default async function Page({ params }: PageProps) {
   const animePage = await getAnimeById(parseInt(params.slug));
 
+  const englishTitle = animePage.titles.find(
+    (title) => title.type === "English"
+  );
+
   return (
     <div
       className={`flex flex-col items-center justify-center`}
@@ -35,6 +39,13 @@ export default async function Page({ params }: PageProps) {
           >
             {animePage.title}
           </h1>
+          <h1
+            title={englishTitle?.title}
+            className="cursor-default font-bold text-xl text-red-800"
+          >
+            {englishTitle?.title}
+          </h1>
+
           <p>{animePage.type}</p>
           <p>{animePage.genres?.map((genres) => `${genres.name} `)}</p>
           <p>{animePage.duration}</p>
