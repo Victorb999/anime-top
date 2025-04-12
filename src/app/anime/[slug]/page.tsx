@@ -1,21 +1,29 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
-import { getAnimeById } from "@/services/api";
+import Link from "next/link"
+import { getAnimeById } from "@/services/api"
+import { AnimeTrailer } from "@/components/AnimeTrailer/AnimeTrailer"
 
 interface PageProps {
-  params: { slug: string };
+  params: { slug: string }
 }
 
 export default async function Page({ params }: PageProps) {
-  const animePage = await getAnimeById(parseInt(params.slug));
+  const animePage = await getAnimeById(parseInt(params.slug))
 
   const englishTitle = animePage.titles.find(
     (title) => title.type === "English"
-  );
+  )
 
   return (
     <div
-      className={`flex flex-col items-center justify-center`}
+      className={`flex 
+        flex-col
+        sm:flex-row
+        gap-4
+        h-[90dvh]
+        items-start 
+        justify-around
+        `}
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.98), rgba(0, 0, 0, 0.9)), url(${
           animePage?.trailer?.images?.maximum_image_url ?? ""
@@ -24,7 +32,12 @@ export default async function Page({ params }: PageProps) {
         backgroundSize: "cover",
       }}
     >
-      <div className="flex justify-center items-center p-4 gap-4">
+      <div
+        className="flex 
+      flex-col
+      sm:flex-row
+      justify-center items-center p-4 gap-4"
+      >
         <div>
           <img
             src={animePage.images?.webp.large_image_url}
@@ -74,15 +87,14 @@ export default async function Page({ params }: PageProps) {
           </Link>
         </div>
       </div>
-      <div className="flex justify-center pb-12">
+      <div className="flex flex-col justify-center items-center p-4 gap-4">
         {animePage.trailer?.embed_url && (
-          <iframe
-            width="420"
-            height="315"
-            src={`${animePage.trailer?.embed_url}&output=embed`}
-          ></iframe>
+          <>
+            <h1 className="text-2xl font-bold">Trailer</h1>
+            <AnimeTrailer trailer={animePage.trailer.embed_url} />
+          </>
         )}
       </div>
     </div>
-  );
+  )
 }

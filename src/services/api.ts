@@ -2,11 +2,6 @@ import axios from "axios"
 import { Anime, Daum, SearchParams, Genre } from "./types"
 
 export const api = axios.create({
-  headers: {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-    cache: "no-store",
-  },
   baseURL: `https://api.jikan.moe/v4/`,
 })
 
@@ -52,6 +47,17 @@ export const getAnimeGenres = async (): Promise<Genre[]> => {
     })
     .catch((error) => {
       console.log(error)
+      return null
+    })
+}
+
+export const getAnimeRandom = async (): Promise<Daum> => {
+  return await api
+    .get(`random/anime`)
+    .then((data) => {
+      return data.data.data
+    })
+    .catch((error) => {
       return null
     })
 }
