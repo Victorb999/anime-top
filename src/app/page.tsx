@@ -1,14 +1,14 @@
-import { AnimeSeasonList } from "@/components/AnimeSeasonList/AnimeSeasonList";
-import { SearchBar } from "@/components/SearchBar/SearchBar";
+import { AnimeSeasonList } from "@/containers/AnimeSeasonList/AnimeSeasonList"
+import { SearchBar } from "@/containers/SearchBar/SearchBar"
 
 export default function Home() {
   return (
     <main
-      className="flex flex-col items-center 
-      justify-center px-4 py-8 lg:px-8 xl:px-12 w-full"
+      className="flex flex-col items-center gap-4
+      justify-center w-full pb-4"
     >
-      <SearchBar />
       <AnimeSeasonList />
+      <SearchBar />
     </main>
-  );
+  )
 }

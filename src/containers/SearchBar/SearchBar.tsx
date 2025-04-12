@@ -1,15 +1,15 @@
 "use client"
 import { getAnimeSearch } from "@/services/api"
 import useStore from "@/store/store"
-import { SearchInputTerm } from "../SearchInputTerm/SearchInputTerm"
-import { SearchResult } from "../SearchResult/SearchResult"
+import { SearchInputTerm } from "../../components/SearchInputTerm/SearchInputTerm"
+import { SearchResult } from "../../components/SearchResult/SearchResult"
 import { useState } from "react"
-import { SearchSelectType } from "../SearchSelectType/SearchSelectType"
-import { SearchNumberScore } from "../SearchNumberScore/SearchNumberScore"
-import { SearchSelectRating } from "../SearchSelectRating/SearchSelectRating"
-import { SearchSelectOrder } from "../SearchSelectOrder/SearchSelectOrder"
-import { SearchSelectSort } from "../SearchSelectSort/SearchSelectSort"
-import { SearchByGenres } from "../SearchByGenres/SearchByGenres"
+import { SearchSelectType } from "../../components/SearchSelectType/SearchSelectType"
+import { SearchNumberScore } from "../../components/SearchNumberScore/SearchNumberScore"
+import { SearchSelectRating } from "../../components/SearchSelectRating/SearchSelectRating"
+import { SearchSelectOrder } from "../../components/SearchSelectOrder/SearchSelectOrder"
+import { SearchSelectSort } from "../../components/SearchSelectSort/SearchSelectSort"
+import { SearchByGenres } from "../../components/SearchByGenres/SearchByGenres"
 
 export const SearchBar = () => {
   const { searchParams } = useStore()
@@ -25,7 +25,8 @@ export const SearchBar = () => {
   }
 
   return (
-    <div className="flex flex-col w-full gap-4">
+    <div className="flex flex-col w-full gap-4 items-center">
+      <h1 className="text-2xl font-bold ml-10">Search Anime</h1>
       <div className="flex items-center justify-center gap-2 w-full flex-wrap">
         <SearchInputTerm />
         <SearchNumberScore />
