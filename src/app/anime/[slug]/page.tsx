@@ -4,11 +4,12 @@ import { getAnimeById } from "@/services/api"
 import { AnimeTrailer } from "@/components/AnimeTrailer/AnimeTrailer"
 
 interface PageProps {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
-export default async function Page({ params }: Awaited<PageProps>) {
-  const animePage = await getAnimeById(parseInt(params.slug))
+export default async function Page({ params }: PageProps) {
+  const { slug } = await params
+  const animePage = await getAnimeById(parseInt(slug))
 
   const englishTitle = animePage.titles.find(
     (title) => title.type === "English"
