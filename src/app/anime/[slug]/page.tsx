@@ -7,7 +7,7 @@ interface PageProps {
   params: { slug: string }
 }
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: Awaited<PageProps>) {
   const animePage = await getAnimeById(parseInt(params.slug))
 
   const englishTitle = animePage.titles.find(

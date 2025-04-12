@@ -2,6 +2,8 @@
 import { getSeasonNow } from "@/services/api"
 import { AnimeList } from "@/components/AnimeList/AnimeList"
 
+export const revalidate = 3600
+
 export const AnimeSeasonList = async () => {
   const animeSeasonList = await getSeasonNow()
 
