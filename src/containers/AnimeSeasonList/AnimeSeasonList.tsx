@@ -9,7 +9,7 @@ export const AnimeSeasonList = async () => {
 
   return (
     <div
-      className="flex flex-col w-full bg-[#0d1117] p-4
+      className="flex flex-col w-full bg-custom-secondary p-4
     border-b border-[#302c33]"
     >
       <AnimeList

@@ -1,9 +1,10 @@
 "use client"
 import { getAnimeRandom } from "@/services/api"
-import { useState } from "react"
+import { Daum } from "@/services/types"
+import { useEffect, useState } from "react"
 
 export const RandomAnime = () => {
-  const [randomAnime, setRandomAnime] = useState<any>(null)
+  const [randomAnime, setRandomAnime] = useState<Daum | null>(null)
   const [loading, setLoading] = useState(false)
 
   const fetchRandomAnime = async () => {
@@ -20,9 +21,13 @@ export const RandomAnime = () => {
   const handleClick = async () => {
     setLoading(true)
     await fetchRandomAnime()
-    if (!randomAnime) return
-    window.location.href = `/anime/${randomAnime?.mal_id}`
   }
+
+  useEffect(() => {
+    if (randomAnime) {
+      window.location.href = `/anime/${randomAnime?.mal_id}`
+    }
+  }, [randomAnime])
 
   return (
     <button
