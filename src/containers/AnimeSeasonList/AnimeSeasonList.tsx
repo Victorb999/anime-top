@@ -1,21 +1,33 @@
-/* eslint-disable @next/next/no-img-element */
 import { getSeasonNow } from "@/services/api"
 import { AnimeList } from "@/components/AnimeList/AnimeList"
+import { Anime } from "@/services/types"
+import { useState, useEffect } from "react"
 
-export const revalidate = 3600
+export const AnimeSeasonList = () => {
+  const [animeSeasonList, setAnimeSeasonList] = useState<Anime | null>(null)
+  const [loading, setLoading] = useState(true)
 
-export const AnimeSeasonList = async () => {
-  const animeSeasonList = await getSeasonNow()
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getSeasonNow()
+      setAnimeSeasonList(data)
+      setLoading(false)
+    }
+    fetchData()
+  }, [])
 
+  if (loading) {
+    return (
+      <div className="flex w-full justify-center items-center">Loading...</div>
+    )
+  }
+
+  if (!animeSeasonList) {
+    return <div>No data available</div>
+  }
   return (
-    <div
-      className="flex flex-col w-full bg-custom-secondary p-4
-    border-b border-[#302c33]"
-    >
-      <AnimeList
-        animeList={animeSeasonList?.data}
-        title={"Anime season list"}
-      />
+    <div>
+      <AnimeList animeList={animeSeasonList?.data} />
     </div>
   )
 }

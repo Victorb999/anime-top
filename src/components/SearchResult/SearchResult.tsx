@@ -32,7 +32,8 @@ export const SearchResult = ({ searchAction }: SearchResultProps) => {
       className="bg-custom-secondary p-4
       border-b border-[#302c33]"
     >
-      <AnimeList animeList={animeList} title={"Search results"} />
+      <h1 className="text-2xl font-bold ml-10">Search results</h1>
+      <AnimeList animeList={animeList} />
     </div>
   )
 }

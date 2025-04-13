@@ -4,13 +4,10 @@ import Link from "next/link"
 
 interface AnimeListProps {
   animeList: Daum[]
-  title: string
 }
-export const AnimeList = ({ animeList, title }: AnimeListProps) => {
+export const AnimeList = ({ animeList }: AnimeListProps) => {
   return (
     <div className="flex flex-col gap-2">
-      <h1 className="text-2xl font-bold ml-10">{title}</h1>
-
       <div className="flex flex-wrap gap-4 justify-center">
         {animeList?.map((anime) => {
           return (
@@ -28,10 +25,10 @@ export const AnimeList = ({ animeList, title }: AnimeListProps) => {
                 alt={anime.title}
                 className="max-w-[80px]"
               />
-              <div className="flex flex-col items-start p-2">
+              <div className="flex flex-col items-start">
                 <span title={anime.title} className="cursor-default text-sm">
-                  {anime.title.substring(0, 40)}
-                  {anime.title.length > 40 ? "..." : ""}
+                  {anime.title.substring(0, 38)}
+                  {anime.title.length > 38 ? "..." : ""}
                 </span>
                 <p className="font-bold">{anime.score} ⭐</p>
               </div>
