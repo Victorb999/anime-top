@@ -9,16 +9,17 @@ export const AnimeList = ({ animeList }: AnimeListProps) => {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex flex-wrap gap-4 justify-center">
-        {animeList?.map((anime) => {
+        {animeList?.map((anime, index) => {
           return (
             <Link
-              key={anime.mal_id}
+              key={anime.mal_id + index}
               href={`/anime/${anime.mal_id}`}
               className="flex items-center 
               justify-start
               gap-2
               w-[200px]
-              bg-gray-900 duration-200 hover:brightness-50"
+              rounded-e
+              bg-custom-secondary duration-200 hover:brightness-50"
             >
               <img
                 src={anime.images.webp.image_url}

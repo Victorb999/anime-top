@@ -25,25 +25,30 @@ export const SearchBar = () => {
   }
 
   return (
-    <div className="flex flex-col w-full gap-4 items-center">
-      <h1 className="text-2xl font-bold ml-10">Search Anime</h1>
-      <div className="flex items-center justify-center gap-2 w-full flex-wrap">
-        <SearchInputTerm />
-        <SearchNumberScore />
-        <SearchSelectType />
-        <SearchSelectRating />
-        <SearchSelectOrder />
-        <SearchSelectSort />
-        <button
-          onClick={() => searchAnime()}
-          className="flex justify-center items-center p-2 bg-gradient-to-r from-rose-700 to-pink-700
+    <div
+      className="flex flex-col w-full gap-4 py-4 items-center 
+      "
+    >
+      <div className="flex flex-col w-full border-b border-[#302c33]  gap-4 pb-4 items-center">
+        <h1 className="text-2xl font-bold ml-10">Search Anime</h1>
+        <div className="flex items-center justify-center gap-2 w-full flex-wrap">
+          <SearchInputTerm />
+          <SearchNumberScore />
+          <SearchSelectType />
+          <SearchSelectRating />
+          <SearchSelectOrder />
+          <SearchSelectSort />
+          <button
+            onClick={() => searchAnime()}
+            className="flex justify-center items-center p-2 bg-gradient-to-r from-rose-700 to-pink-700
          text-white font-bold rounded-sm duration-200 hover:brightness-150 w-[120px]"
-        >
-          Buscar
-        </button>
-      </div>
-      <div className="flex flex-col items-center justify-center">
-        <SearchByGenres />
+          >
+            Buscar
+          </button>
+        </div>
+        <div className="flex flex-col items-center justify-center">
+          <SearchByGenres />
+        </div>
       </div>
       <div className="flex flex-col items-center justify-center">
         <SearchResult searchAction={searchAction} />

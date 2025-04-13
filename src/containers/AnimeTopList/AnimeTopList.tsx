@@ -3,19 +3,18 @@ import { AnimeList } from "@/components/AnimeList/AnimeList"
 import { useEffect, useState } from "react"
 import { Anime } from "@/services/types"
 
-export const AnimeTopList = () => {
+export const AnimeTopList = ({ filter }: { filter: string }) => {
   const [animeTopList, setAnimeTopList] = useState<Anime | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getAnimeTop()
+      const data = await getAnimeTop(filter)
       setAnimeTopList(data)
       setLoading(false)
-      console.log(data)
     }
     fetchData()
-  }, [])
+  }, [filter])
 
   if (loading) {
     return (

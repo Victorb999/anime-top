@@ -62,9 +62,9 @@ export const getAnimeRandom = async (): Promise<Daum> => {
     })
 }
 
-export const getAnimeTop = async (): Promise<Anime> => {
+export const getAnimeTop = async (filter: string): Promise<Anime> => {
   return await api
-    .get(`top/anime?limit=10&type=tv&filter=bypopularity`)
+    .get(`top/anime?limit=10&type=tv&filter=${filter}`)
     .then((data) => {
       return data.data
     })

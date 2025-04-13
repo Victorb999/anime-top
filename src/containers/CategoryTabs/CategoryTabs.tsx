@@ -9,14 +9,32 @@ export const CategoryTabs = () => {
   const categories = [
     {
       id: 1,
-      title: "Anime season list",
+      title: "Anime season",
       component: <AnimeSeasonList />,
       active: true,
     },
     {
       id: 2,
-      title: "Anime top list",
-      component: <AnimeTopList />,
+      title: "Anime top popularity",
+      component: <AnimeTopList filter="bypopularity" />,
+      active: false,
+    },
+    {
+      id: 3,
+      title: "Anime top favorite",
+      component: <AnimeTopList filter="favorite" />,
+      active: false,
+    },
+    {
+      id: 4,
+      title: "Anime top upcoming",
+      component: <AnimeTopList filter="upcoming" />,
+      active: false,
+    },
+    {
+      id: 5,
+      title: "Anime top airing",
+      component: <AnimeTopList filter="airing" />,
       active: false,
     },
   ]
@@ -30,34 +48,37 @@ export const CategoryTabs = () => {
 
   return (
     <div
-      className="flex flex-col bg-custom-secondary w-full 
-    border-b border-[#302c33] pb-2 gap-4"
+      className="flex flex-col  w-full 
+    border-b border-[#302c33]"
     >
-      <div className="flex bg-black w-full">
+      <div className="flex w-full border-b border-[#302c33]">
         {categories.map((category, index) => (
           <div
             key={index}
-            className="flex p-4 rounded-t-lg 
-           "
+            className="flex flex-col 
+            justify-center items-center relative
+            p-4"
             style={
               category.id === activeTab
                 ? {
                     color: "#fff",
-                    backgroundColor: "rgb(var(--secondary-black))",
                   }
-                : { color: "#999", backgroundColor: "#000" }
+                : { color: "#666" }
             }
           >
             <span
-              className="text-lg font-bold cursor-pointer hover:text-rose-400"
+              className="text-lg cursor-pointer hover:text-rose-400"
               onClick={() => setActiveTab(category.id)}
             >
               {category.title}
             </span>
+            {category.id === activeTab && (
+              <div className="absolute bottom-1 h-2 w-10 bg-rose-600 rounded-full mt-2"></div>
+            )}
           </div>
         ))}
       </div>
-      {renderActiveComponent}
+      <div className=" p-4">{renderActiveComponent}</div>
     </div>
   )
 }
